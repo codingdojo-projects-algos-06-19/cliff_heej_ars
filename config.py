@@ -4,6 +4,8 @@ from sqlalchemy.sql import func
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 import re
+import os
+
 
 app = Flask(__name__)
 #config to tell our app witch database we should connecting to 

@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, session, flash, url_for, Response
-from models import User, Pizza
+from models import User, Order, Topping
 
 
 #Register page 
@@ -62,13 +62,13 @@ def pizza_dashboard():
     return render_template('new_order.html')
 
 def pizza_create():
-    pizza_id = Pizza.create_pizza(request.form)
+    pizza_id = Order.create_order(request.form)
     session['pizza_id'] = pizza_id
-    return redirect('pizza:create')
+    return redirect(url_for('order'))
 
 #order page
 def order_page():
-    pizza = Pizza.get_pizza()
+    pizza = Order.get_order()
     return render_template('order.html', pizza = pizza)
 
 
