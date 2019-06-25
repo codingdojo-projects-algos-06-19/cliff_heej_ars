@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, session, flash, url_for, Response
-from models import User, Order, Topping
+from models import User, Order, Topping, Address
 
 
 #Register page 
@@ -50,12 +50,16 @@ def logout():
 
 def account():
     current_user = User.query.get(session['user_id'])
-    return render_template('user_account.html', user = current_user)
+    user_address = current_user.addresses[0]
+    print(user_address)
+    return render_template('user_account.html', user = current_user, address = user_address)
 
 def user_update():
-    User.edit_user(request.form)
+    user_id = session['user_id']
+    update_user = User.edit_user(user_id, request.form)
+    user = User.query.get(user_id)
     print('user_update')
-    return redirect(url_for('users:update'))
+    return redirect(url_for('dashboard'))
 
 #pizza controllers
 def pizza_dashboard():

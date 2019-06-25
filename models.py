@@ -9,7 +9,7 @@ PW_REGEX = re.compile('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@
 PHONE_REGEX=re.compile('^\d{3}\d{3}\d{4}$')
 
 
-#make Users' model
+#make Users' table 
 class User(db.Model):
     __tablename__="users"
     id = db.Column(db.Integer, primary_key=True)
@@ -21,12 +21,11 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
 
-    def __repr__(self):
-        return '<User {}>'.format(self.first_name)
 
     #To validate if user enter correct information
     @classmethod
     def register_validation(cls, form):
+        print(form)
         errors=[]
         if len(form['first_name']) < 1:
             errors.append('Please enter your first name!')
@@ -47,12 +46,21 @@ class User(db.Model):
         existing_emails = cls.query.filter_by(email=form['email']).first()
         if existing_emails:
             errors.append("Email is already registered!")
+
+     #check if password and confirm password match 
         if form['password'] != form['confirm_password']:
             errors.append("Password must be match!")
+
+    #validate password must be at least 8 character
         if len(form['password']) < 8:
             errors.append("Password must be at least 8 characters!")
+
+    #validate password must has a number between 0-9
         elif re.search('[0-9]', form['password']) is None:
             errors.append("Password required a number!")
+        
+        # if not PW_REGEX.match(form['password']):
+        #     errors.append("Paasword must have a number, a special character, upper and lowercase!")
 
         return errors
     
@@ -69,7 +77,7 @@ class User(db.Model):
         )
         db.session.add(user)
         db.session.commit()
-        Address.new(user.id, form)
+        address = Address.new(user.id, form)
         return user.id
 
     #validate login information
@@ -90,12 +98,11 @@ class User(db.Model):
         update_user.last_name = form['last_name']
         update_user.email = form['email']
         update_user.phone = form['phone']
-        update_user.state = form['state']
-        update_user.city = form['city']
-        address.update_user.addresses[0]
+        address = update_user.addresses[0]
         address.street = form['street']
         address.city = form['city']
         address.state = form['state']
+        address.zip_code = form['zip_code']
         db.session.commit()
         print('user updated')
         return update_user.id
@@ -120,12 +127,15 @@ class User(db.Model):
 class Address(db.Model):
     __tablename__='addresses'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     street = db.Column(db.String(255))
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
+    zip_code = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
+
+    #One User can have many Address
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', foreign_keys=[user_id], backref=db.backref('addresses', cascade='all'))
 
     @classmethod
@@ -135,10 +145,11 @@ class Address(db.Model):
             street = form['street'],
             city = form['city'],
             state = form['state'],
+            zip_code = form['zip_code'],
         )
         db.session.add(address)
         db.session.commit()
-        return address
+        return address.id
 
 
 
