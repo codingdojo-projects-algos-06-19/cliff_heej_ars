@@ -7,10 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body class="pic">
+    <div class="wrapper">
         <a href="{{ url_for('dashboard') }}">Home</a>
-        <h2>{{ user.first_name }}'s account</h2>
-        <div class=box>
+        <h3>{{ user.first_name }}'s account</h3>
+        <div class="account_info">
             <p>name: {{ user.first_name }} {{ user.last_name }}</p>
             <p>email: {{ user.email }}</p>
             <p>address: {{ address.street }} {{ address.city }} {{ address.state }} {{ address.zip_code }} </p>
@@ -35,5 +36,6 @@
             <input type="text" name="zip_code" id="" placeholder="{{ address.zip_code }}">
             <input type="submit" value="update">
         </form>
+    </div>
 </body>
 </html>

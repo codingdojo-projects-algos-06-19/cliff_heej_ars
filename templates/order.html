@@ -8,31 +8,47 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
 </head>
-<body>
-    <h1>Order</h1>
-    <a href="{{ url_for('dashboard') }}">Home</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Qty</th>
-                <th>Size</th>
-                <th>Crust</th>
-                <th>Toppings</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pizzas in pizza %}
-            <tr>
-                <th>{{ pizzas.qty }}</th>
-                <th>{{ pizzas.size }}</th>
-                <th>{{ pizzas.crust }}</th>
-                <th>{{ pizzas.toppings }}</th>
-                <th>{{ pizzas.subtotal }}</th>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<body class="pic">
+    <div class="wrapper">
+        <h3>Make an Order!</h3>
+        <div>
+            <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('order') }}">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('users:logout') }}">logout</a>
+                    </li>
+        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Qty</th>
+                        <th>Size</th>
+                        <th>Crust</th>
+                        <th>Toppings</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pizzas in pizza %}
+                    <tr>
+                        <th>{{ pizzas.qty }}</th>
+                        <th>{{ pizzas.size }}</th>
+                        <th>{{ pizzas.crust }}</th>
+                        <th>{{ pizzas.toppings }}</th>
+                        <th>{{ pizzas.subtotal }}</th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
 
 
    

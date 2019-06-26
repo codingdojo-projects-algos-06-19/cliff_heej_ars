@@ -3,12 +3,22 @@
     padding:0px;
     font-family: sans-serif;
 }
-.dashboard_body{
+.wrapper{
+    width: 970px;
+    background-color: #5c170f;
+}
+.pic{
     background: url(restaurant.png);
+}
+h3{
+    color: white;
 }
 .white{
     color: white;
 }
 .a{
     font: white;
+}
+.account_info{
+
 }
