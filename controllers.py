@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, session, flash, url_for, Response
-from models import User, Order, Topping, Address
+from models import User, Order, Topping, Address, Pizza, Topping_Menu, Size, Crust, Method
 
 
 #Register page 
@@ -63,18 +63,49 @@ def user_update():
 
 #pizza controllers
 def pizza_dashboard():
-    return render_template('new_order.html')
+    size = Size.get_all_size()
+    method = Method.get_all_methods()
+    crust = Crust.get_all_crust()
+    topping_menu = Topping_Menu.get_all_toppings()
+    return render_template('new_order.html', size = size, method = method, crust = crust, topping_menu = topping_menu)
 
 def pizza_create():
-    pizza_id = Order.create_order(request.form)
-    session['pizza_id'] = pizza_id
+    pizza = Order.new_order(request.form)
+    session['pizza_id'] = pizza
     return redirect(url_for('order'))
 
 #order page
 def order_page():
-    pizza = Order.get_order()
+    pizza = Pizza.get_user_order()
     return render_template('order.html', pizza = pizza)
 
 
+#create apge
+def create_page():
+    size = Size.get_all_size()
+    method = Method.get_all_methods()
+    crust = Crust.get_all_crust()
+    topping_menu = Topping_Menu.get_all_toppings()
+    return render_template('staff.html', size = size, method = method, crust = crust, topping_menu = topping_menu)
+
+def create_topping():
+    topping_id = Topping_Menu.new(request.form)
+    session['topping_id'] = topping_id
+    return redirect(url_for('create_page'))
+
+def create_size():
+    size_id = Size.create_size(request.form)
+    session['size_id'] = size_id
+    return redirect(url_for('create_page'))
+
+def create_crust():
+    crust_id = Crust.create_crust(request.form)
+    session['crust_id'] = crust_id
+    return redirect(url_for('create_page'))
+
+def create_method():
+    method_id = Method.create_method(request.form)
+    session['method_id'] = method_id
+    return redirect(url_for('create_page'))
 
 

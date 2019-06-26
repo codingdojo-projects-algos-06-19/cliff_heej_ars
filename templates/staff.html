@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{ url_for('create:crust') }}" method="post">
+        <input type="text" name="crust" id="" placeholder="crust">
+        <input type="text" name="price" id="" placeholder="price">
+        <input type="submit" value="Create">
+    </form>
+    <form action="{{ url_for('create:size') }}" method="post">
+        <input type="text" name="size" id="" placeholder="size">
+        <input type="text" name="price" id="" placeholder="price">
+        <input type="submit" value="Create">
+    </form>
+    <form action="{{ url_for('create:method') }}" method="post">
+        <input type="text" name="method" id="" placeholder="method">
+        <input type="submit" value="Create">
+    </form>
+    <form action="{{ url_for('create:topping') }}" method="post">
+        <input type="text" name="topping" id="" placeholder="topping">
+        <input type="text" name="price" id="" placeholder="price">
+        <input type="submit" value="Create">
+    </form>
+
+    <h1>size</h1>
+    {% for sizes in size %}
+        <input type="checkbox" name="{{ size.id }}" id="">
+        <label for="">{{ sizes.size }}</label>
+        <label for="">{{ sizes.price }}</label>
+    {% endfor %}
+    <h1>Crust</h1>
+    {% for crusts in crust %}
+        <label for="">{{ crusts.crust }}</label>
+        <label for="">{{ crusts.price }}</label>
+    {% endfor %}
+    <h1>Method</h1>
+    {% for methods in method %}
+        <label for="">{{ methods.method }}</label>
+    {% endfor %}
+    <h1>Topping</h1>
+    {% for toppings in topping_menu %}
+        <label for="">{{ toppings.topping }}</label>
+        <label for="">{{ toppings.price }}</label>
+    {% endfor %}
+</body>
+</html>
