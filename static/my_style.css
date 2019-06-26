@@ -2,6 +2,13 @@
     margin:auto;
     padding:0px;
     font-family: sans-serif;
-    background-image: 
 }
-
+.dashboard_body{
+    background: url(restaurant.png);
+}
+.white{
+    color: white;
+}
+.a{
+    font: white;
+}

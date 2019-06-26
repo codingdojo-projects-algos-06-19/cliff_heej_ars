@@ -14,30 +14,38 @@
     <form action="{{ url_for('pizza:create') }}" method="post">
         <label for="method">Method</label>
         <select name="method" id="">
-            {% for methods in method %}
-            <option value="{{ method.id }}">{{ methods.method }}</option>
-            {% endfor %}
+            <option value="delievery">Delievery</option>
+            <option value="carryOut">Carry Out</option>
         </select>
         <label for="size">Size</label>
         <select name="size" id="">
-            {% for sizes in size %}
-            <option value="{{ size.id }}">{{ sizes.size }}</option>
-            {% endfor %}
+            <option value="large">Large</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
         </select>
         <label for="crust">Crust</label>
         <select name="crust" id="">
-            {% for crusts in crust %}
-            <option value="{{ crust.id }}">{{ crusts.crust }}</option>
-            {% endfor %}
+            <option value="thinCrust">Thin Crust</option>
+            <option value="regular">Regular</option>
+            <option value="thickCruck">ThickCrust</option>
         </select>
         <label for="qty">QTY</label>
         <input type="number" name="qty" id="" value="1"> 
 
         <label for="topping">Toppings</label>
-            {% for toppings in topping_menu %}
-        <input type="checkbox" name='topping' value="{{ topping_menu.id }}">{{ toppings.topping }} {{ toppings.price }}
-            {% endfor %}
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="text" name="price" value="1.99" id="">
 
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
 
         <input type="submit" value="ADD TO ORDER">
     </form>

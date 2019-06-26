@@ -9,16 +9,33 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
 
 </head>
-<body>
-    <p>Welcome {{ user.first_name }}</p>
-    <a href="{{ url_for('dashboard') }}">Home</a>
-    <a href="{{ url_for('order') }}">order</a>
-    <a href="{{ url_for('users:account') }}">account</a>
-    <a href="{{ url_for('users:logout') }}">logout</a>
+<body class="dashboard_body">
+    <div class="wrapper">
+        <div>
+            <p class="white">Welcome {{ user.first_name }}</p>
+            <h3 class="white">New orders</h3>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ url_for('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:logout') }}">logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
     
-    <h1>New order</h1>
     <a href="{{ url_for('pizza:dashboard') }}">New Order</a>
     <a href="">Re-Order My Fave</a>
     <a href="">Suprise Me</a>
+    </div>
 </body>
 </html>
