@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h1>PizzaTime GUYS</h1>
-    <a href="{{ url_for('users:login_page') }}">login</a>
-    <a href="{{ url_for('users:register_page') }}">register</a>
-
+    <p>Welcome, {{ user.first_name }}</p>
+    <a href="{{ url_for('dashboard') }}">Home</a>
+    <a href="{{ url_for('order') }}">order</a>
+    <a href="{{ url_for('users:account') }}">account</a>
+    <a href="{{ url_for('users:logout') }}">logout</a>
     
+    <h1>New order</h1>
+    <a href="{{ url_for('pizza:dashboard') }}">New Order</a>
+    <a href="">Re-Order My Fave</a>
+    <a href="">Suprise Me</a>
 </body>
 </html>
