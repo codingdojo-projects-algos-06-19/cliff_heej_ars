@@ -38,14 +38,14 @@
         </div>
         <!-- Links -->
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="register.html"><h5>Create an Account</h5></a>
+            <a class="navbar-brand mx-auto" href="{{ url_for('users:register_page') }}"><h5>Create an Account</h5></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <a class="navbar-brand mx-auto" href="login.html"><h5>Already have an Account? Login</h5></a>
+            <a class="navbar-brand mx-auto" href="{{ url_for('users:login_page') }}"><h5>Already have an Account? Login</h5></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
