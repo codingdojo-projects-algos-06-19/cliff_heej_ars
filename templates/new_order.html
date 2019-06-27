@@ -10,8 +10,8 @@
 </head>
 <body class="pic">
     <div class="wrapper">
-        <h3>CRAFT-A-PIZZA</h3>
-        <a href="{{ url_for('dashboard') }}">Home</a>
+        <h3 class="header">CRAFT-A-PIZZA</h3>
+            <a href="{{ url_for('dashboard') }}">Home</a>
 
         <form action="{{ url_for('pizza:create') }}" method="post">
             <label for="method">Method</label>
@@ -33,14 +33,11 @@
             </select>
             <label for="qty">QTY</label>
             <input type="number" name="qty" id="" value="1"> 
-
-            <label for="topping">Toppings</label>
-            <input type="checkbox" name='topping' value="cheese">cheese
             <input type="text" name="price" value="1.99" id="">
-            <br>
-            <div>
+        </form>
+    </div>
+        <div>
             <h3>Toppings</h3>
-            <br>
             <div class="Toppings">
                 <div>
                     <h3>Meats</h3>
@@ -57,8 +54,8 @@
                         <input type="submit" value="ADD TO ORDER">
                 </div>
                 <div>
-                <h3>Vegetables</h3>
-                    <label for="toppings">Toppings</label>
+                    <h3>Vegetables</h3>
+                        <label for="toppings">Toppings</label>
                         <select name="veggies" id="veggies">
                             <option value="">Spinach</option>
                             <option value="">Artichoke</option>
@@ -74,7 +71,7 @@
                         <input type="submit" value="ADD TO ORDER">
                 </div>
                 <div>
-                <h3>Cheeses</h3>
+                    <h3>Cheeses</h3>
                     <label for="toppings">Cheese</label>
                         <select name="veggies" id="veggies">
                             <option value="">Mozzarella</option>
@@ -84,9 +81,9 @@
                             <option value="">Gouda Cheese</option>
                             <option value="">Provolone</option>
                         </select>
-                        <input type="submit" value="ADD TO ORDER">
+                    <input type="submit" value="ADD TO ORDER">
                 </div>
-            </div>
+        </div>
             <!-- <input type="checkbox" name='topping' value="Peperoni">cheese
             <input type="checkbox" name='topping' value="Sausage">cheese
             <input type="checkbox" name='topping' value="Hamburger">cheese
@@ -97,8 +94,14 @@
             <input type="checkbox" name='topping' value="cheese">cheese
             <input type="checkbox" name='topping' value="cheese">cheese
             <input type="checkbox" name='topping' value="cheese">cheese -->
-
         </form>
+    </div>
+    <div class="footer">
+        <div class="info">
+                <p>Any concerns or great feedback. Call toll Free (877) 339-5855</p>
+                <a id="orders" href=""><span>feedback@pizzatime.com</span></a>
+                <p>©2019 Iv_Ars_Heej Software</p>
+        </div>
     </div>
 </body>
 </html>

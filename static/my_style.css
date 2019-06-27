@@ -5,10 +5,16 @@
 }
 .wrapper{
     width: 970px;
-    background-color: #5c170f;
+    background-color: #c1682f;
+    border-radius: 12px;
+}
+.header{
+    margin-left: 12px;
+    padding: 5px;
+    text-align: center;
 }
 .pic{
-    background: url(restaurant.png);
+    background: url(yellowslice.jpg);
 }
 h3{
     color: white;
@@ -21,4 +27,26 @@ h3{
 }
 .account_info{
 
+}
+
+
+
+.info{
+    background: none;
+    width: 970px;
+    border-top: 1px solid gray;
+    padding-top: 4px;
+    padding-left: 43px;
+    margin-left: 75px;
+    margin-right: 185px;
+    margin-top: 729px;
+}
+.info p{
+    display: inline-block;
+    border-right: gray;
+}
+.span{
+    color:#647f36;
+    margin-left:12px;
+    margin-right: 12px;
 }
