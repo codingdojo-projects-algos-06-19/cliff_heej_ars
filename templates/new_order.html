@@ -16,74 +16,77 @@
         <form action="{{ url_for('pizza:create') }}" method="post">
             <label for="method">Method</label>
             <select name="method" id="">
-                <option value="delievery">Delievery</option>
-                <option value="carryOut">Carry Out</option>
+                <option value="Delievery">Delievery</option>
+                <option value="Carry Out">Carry Out</option>
             </select>
             <label for="size">Size</label>
             <select name="size" id="">
-                <option value="large">Large</option>
-                <option value="medium">Medium</option>
-                <option value="small">Small</option>
+                <option value="Large $3.99">Large $3.99</option>
+                <option value="Medium $2.99">Medium $2.99</option>
+                <option value="Small $1.99">Small $1.99</option>
             </select>
             <label for="crust">Crust</label>
             <select name="crust" id="">
-                <option value="thinCrust">Thin Crust</option>
-                <option value="regular">Regular</option>
-                <option value="thickCruck">ThickCrust</option>
+                <option value="Thin $2.99">Thin Crust $2.99</option>
+                <option value="Regular $1.99">Regular $1.99</option>
+                <option value="Thick $4.99">Thick Crust $4.99</option>
             </select>
             <label for="qty">QTY</label>
-            <input type="number" name="qty" id="" value="1"> 
-            <input type="text" name="price" value="1.99" id="">
-        </form>
+            <input type="number" name="qty" id="" value="1">
+
+
     </div>
         <div>
             <h3>Toppings</h3>
             <div class="Toppings">
                 <div>
                     <h3>Meats</h3>
-                    <label for="toppings">Toppings</label>
-                        <select name="meats" id="">
-                            <option value="">Peperoni</option>
-                            <option value="">Sausage</option>
-                            <option value="">Chicken</option>
-                            <option value="">Hamburger</option>
-                            <option value="">Ham</option>
-                            <option value="">Shredded BBQ Pork</option>
-                            <option value="">Halibut</option>
+                    <label for="topping1">Toppings</label>
+                        <select name="topping1" id="">
+                            <option value="Peperoni $1.99">Peperoni</option>
+                            <option value="Sausage $1.99">Sausage</option>
+                            <option value="Chicken $2.99">Chicken</option>
+                            <option value="Hamburger $1.99">Hamburger</option>
+                            <option value="Ham $1.99">Ham</option>
+                            <option value="Shredded BBQ Pork $1.99">Shredded BBQ Pork</option>
+                            <option value="Halibut $1.99">Halibut</option>
                         </select>
-                        <input type="submit" value="ADD TO ORDER">
+                        <input type="number" name="price" value="1.99" id="">
+
                 </div>
                 <div>
                     <h3>Vegetables</h3>
-                        <label for="toppings">Toppings</label>
-                        <select name="veggies" id="veggies">
-                            <option value="">Spinach</option>
-                            <option value="">Artichoke</option>
-                            <option value="">Redbell Peppers</option>
-                            <option value="">Greenbell Peppers</option>
-                            <option value="">Banana Peppers</option>
-                            <option value=""> Red Onions</option>
-                            <option value="">Tomatoes</option>
-                            <option value="">Mushrooms</option>
-                            <option value="">Olives</option>
-                            <option value=""></option>
+                        <label for="topping2">Toppings</label>
+                        <select name="topping2" id="veggies">
+                            <option value="Spinach $1.99">Spinach</option>
+                            <option value="Artichoke $1.99">Artichoke</option>
+                            <option value="Redbell Peppers $1.99">Redbell Peppers</option>
+                            <option value="Greenbell Peppers $1.99">Greenbell Peppers</option>
+                            <option value="Banana Peppers $1.99">Banana Peppers</option>
+                            <option value="Red Onions $1.99">Red Onions</option>
+                            <option value="Tomatoes $1.99">Tomatoes</option>
+                            <option value="Mushrooms $1.99">Mushrooms</option>
+                            <option value="Olives $1.99">Olives</option>       
                         </select>
-                        <input type="submit" value="ADD TO ORDER">
+   
                 </div>
                 <div>
                     <h3>Cheeses</h3>
-                    <label for="toppings">Cheese</label>
-                        <select name="veggies" id="veggies">
-                            <option value="">Mozzarella</option>
-                            <option value="">Feta</option>
-                            <option value="">Cheddar</option>
-                            <option value="">Melted Cheddar</option>
-                            <option value="">Gouda Cheese</option>
-                            <option value="">Provolone</option>
+                    <label for="topping3">Cheese</label>
+                        <select name="topping3" id="veggies">
+                            <option value="Mozzarella $1.99">Mozzarella</option>
+                            <option value="Feta $1.99">Feta</option>
+                            <option value="Cheddar $1.99">Cheddar</option>
+                            <option value="Melted Cheddar $1.99">Melted Cheddar</option>
+                            <option value="Gouda Cheese $1.99">Gouda Cheese</option>
+                            <option value="Provolone $1.99">Provolone</option>
                         </select>
+                        <input type="number" name="price" value="1.99" id="">
+                        
                     <input type="submit" value="ADD TO ORDER">
                 </div>
         </div>
+        </form>
             <!-- <input type="checkbox" name='topping' value="Peperoni">cheese
             <input type="checkbox" name='topping' value="Sausage">cheese
             <input type="checkbox" name='topping' value="Hamburger">cheese

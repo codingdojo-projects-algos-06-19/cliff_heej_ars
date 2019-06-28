@@ -34,6 +34,7 @@
                         <th>Crust</th>
                         <th>Toppings</th>
                         <th>Subtotal</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +43,15 @@
                         <th>{{ pizzas.qty }}</th>
                         <th>{{ pizzas.size }}</th>
                         <th>{{ pizzas.crust }}</th>
-                        <th>{{ pizzas.toppings }}</th>
-                        <th>{{ pizzas.subtotal }}</th>
+                    {% for toppings in topping %}
+                        <th>{{ toppings.topping1 }} {{ toppings.topping2 }} {{ toppings.topping3 }}</th>
+                    {% endfor %}
+                        <th>{{ pizzas.price }}</th>
+                        <th><a class="nav-link" href="{{ url_for('users:logout') }}">Delete</a></th>
+                        
                     </tr>
                     {% endfor %}
+                    
                 </tbody>
             </table>
     </div>

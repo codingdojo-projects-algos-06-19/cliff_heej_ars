@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>CRAFT-A-PIZZA</h1>
+    <a href="{{ url_for('dashboard') }}">Home</a>
+    <form action="{{ url_for('pizza:create') }}" method="post">
+   
+        <label for="method">Method</label>
+        <select name="method" id="">
+            <option value="delievery">Delievery</option>
+            <option value="carryOut">Carry Out</option>
+        </select>
+        <label for="size">Size</label>
+        <select name="size" id="">
+            <option value="large">Large</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+        </select>
+        <label for="crust">Crust</label>
+        <select name="crust" id="">
+            <option value="thinCrust">Thin Crust</option>
+            <option value="regular">Regular</option>
+            <option value="thickCruck">ThickCrust</option>
+        </select>
+        <label for="qty">QTY</label>
+        <input type="number" name="qty" id="" value="1"> 
+
+        <label for="topping">Toppings</label>
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="text" name="price" value="1.99" id="">
+
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+        <input type="checkbox" name='topping' value="cheese">cheese
+
+        <input type="submit" value="ADD TO ORDER">
+    </form>
+    
+</body>
+</html>
