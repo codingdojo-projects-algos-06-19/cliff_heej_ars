@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PIZZATIME</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <h1>PizzaTime GUYS</h1>
-    <a href="{{ url_for('users:login_page') }}">login</a>
-    <a href="{{ url_for('users:register_page') }}">register</a>
+    <link rel="stylesheet" type="text/css" href="/static/my_style.css">
 
+</head>
+<body class="pic">
+    <div class="wrapper">
+        <div>
+            <!-- Brand/logo -->
+           
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><h5>Welcome to Pizza Pette's</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:login_page') }}"><h5>Create an Account</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:register_page') }}"><h5>Already have an Account? Login</h5></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="info">
+                <p>Any concerns or great feedback. Call toll Free (877) 339-5855</p>
+                <a id="orders" href=""><span>feedback@pizzatime.com</span></a>
+                <p>©2019 Iv_Ars_Heej Software</p>
+        </div>
+    </div>
     
+    <!-- <a href="/pizza/dashboard">New Order</a>
+    <a href="">Re-Order My Fave</a>
+    <a href="">Suprise Me</a> -->
 </body>
 </html>
