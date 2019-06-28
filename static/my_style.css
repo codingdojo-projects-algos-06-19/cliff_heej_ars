@@ -50,3 +50,16 @@ h3{
     margin-left:12px;
     margin-right: 12px;
 }
+
+.container {
+    padding:20px 20px 0px;
+    margin: 0 auto;
+    width: 500px;
+    border: 2px solid black;
+    background: #c1682f;
+    margin-top:20px;
+    color: white;
+}
+.container h1 {
+    color: #c1682f;
+}
