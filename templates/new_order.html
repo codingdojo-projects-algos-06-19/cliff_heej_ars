@@ -48,7 +48,7 @@
                             <option value="Chicken $2.99">Chicken</option>
                             <option value="Hamburger $1.99">Hamburger</option>
                             <option value="Ham $1.99">Ham</option>
-                            <option value="Shredded BBQ Pork $1.99">Shredded BBQ Pork</option>
+                            <option value="ShreddedBBQPork $1.99">Shredded BBQ Pork</option>
                             <option value="Halibut $1.99">Halibut</option>
                         </select>
                         <input type="number" name="price" value="1.99" id="">
@@ -60,14 +60,15 @@
                         <select name="topping2" id="veggies">
                             <option value="Spinach $1.99">Spinach</option>
                             <option value="Artichoke $1.99">Artichoke</option>
-                            <option value="Redbell Peppers $1.99">Redbell Peppers</option>
-                            <option value="Greenbell Peppers $1.99">Greenbell Peppers</option>
-                            <option value="Banana Peppers $1.99">Banana Peppers</option>
-                            <option value="Red Onions $1.99">Red Onions</option>
+                            <option value="RedbellPeppers $1.99">Redbell Peppers</option>
+                            <option value="GreenbellPeppers $1.99">Greenbell Peppers</option>
+                            <option value="BananaPeppers $1.99">Banana Peppers</option>
+                            <option value="RedOnions $1.99">Red Onions</option>
                             <option value="Tomatoes $1.99">Tomatoes</option>
                             <option value="Mushrooms $1.99">Mushrooms</option>
                             <option value="Olives $1.99">Olives</option>       
                         </select>
+                        <input type="number" name="price" value="1.99" id="">
    
                 </div>
                 <div>
@@ -77,13 +78,15 @@
                             <option value="Mozzarella $1.99">Mozzarella</option>
                             <option value="Feta $1.99">Feta</option>
                             <option value="Cheddar $1.99">Cheddar</option>
-                            <option value="Melted Cheddar $1.99">Melted Cheddar</option>
-                            <option value="Gouda Cheese $1.99">Gouda Cheese</option>
+                            <option value="MeltedCheddar $1.99">Melted Cheddar</option>
+                            <option value="GoudaCheese $1.99">Gouda Cheese</option>
                             <option value="Provolone $1.99">Provolone</option>
                         </select>
                         <input type="number" name="price" value="1.99" id="">
-                        
-                    <input type="submit" value="ADD TO ORDER">
+                    <!-- {% for toppings in topping %}
+                        <a href="/order/{{ topping['id'] }}/add">ADD</a>
+                    {% endfor %} -->
+                        <input type="submit" value="ADD TO ORDER">
                 </div>
         </div>
         </form>

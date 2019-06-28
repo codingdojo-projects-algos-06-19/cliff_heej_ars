@@ -43,11 +43,13 @@
                         <th>{{ pizzas.qty }}</th>
                         <th>{{ pizzas.size }}</th>
                         <th>{{ pizzas.crust }}</th>
-                    {% for toppings in topping %}
+                        {% for toppings in topping %}
                         <th>{{ toppings.topping1 }} {{ toppings.topping2 }} {{ toppings.topping3 }}</th>
-                    {% endfor %}
-                        <th>{{ pizzas.price }}</th>
-                        <th><a class="nav-link" href="{{ url_for('users:logout') }}">Delete</a></th>
+                        <a class="nav-link" href="/pizza/{{toppings.id}}/delete">Delete Topping</a>
+                        <th>${{ pizzas.price + toppings.price }}</th>
+                        {% endfor %}
+                        <th><a class="nav-link" href="/order/{{pizzas.id}}/delete">Delete</a></th>
+
                         
                     </tr>
                     {% endfor %}

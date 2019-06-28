@@ -184,7 +184,15 @@ class Order(db.Model):
     user_who_order_this_order = db.relationship('User', secondary=user_order_table)
     #many to many relationship between order and topping
     toppings_this_order_have = db.relationship('Topping', secondary=orders_topping_table)
-        
+
+    @classmethod
+    def total(cls):
+        total = 0.0
+        total_price = (
+            Topping.price + Order.price
+        )
+        total = total_price
+        return total
 
     @classmethod
     def create_order(cls, form):
@@ -208,13 +216,15 @@ class Order(db.Model):
 
         subtotal = float(form['price']) + size_price + crust_price
         total = float(form['qty']) * subtotal
+        total_price = round(total, 2) 
 
         order = cls (
             method = form['method'],
             size = str_size,
             crust = str_crust,
             qty = form['qty'],
-            price = total,
+            price = total_price,
+
         )
 
         db.session.add(order)
@@ -240,14 +250,29 @@ class Order(db.Model):
         order_update.size = form['size']
         order_update.crust = form['crust']
         order_update.qty = form['qty']
+        topping = order_update.toppings[0]
+        topping.topping1 = form['topping1']
+        topping.topping2 = form['topping2']
+        topping.topping3 = form['topping3']
         db.session.commit()
         return order_update
         
     @classmethod
-    def delete(cls, order_id):
-        delete_order = cls.query.get(order_id)
+    def delete(cls, id):
+        delete_order = Order.query.get(id)
         db.session.delete(delete_order)
         db.session.commit()
+
+
+    # @classmethod
+    # def total(cls, id):
+    #     total = 0.0
+    #     for order in Order:
+    #         total_price = (
+    #             Topping.price + order.price
+    #         )
+    #         total = total_price
+    #     return total
 
 class Topping(db.Model):
     __tablename__='toppings'
@@ -259,24 +284,52 @@ class Topping(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     #many to many relationship btw topping and order
-    order_who_ike_this_topping = db.relationship('Order', secondary=orders_topping_table)
+    order_who_have_this_topping = db.relationship('Order', secondary=orders_topping_table)
     
 
     @classmethod
     def new(cls, form):
+
+        topping1 = form['topping1'].split()
+        print(topping1)
+        str_topping1 = topping1[0] 
+
+        str_value_topping1 = topping1[1].split('$')
+        topping1_price = float(str_value_topping1[1])
+        print(str_value_topping1)
+        print(topping1_price)
+
+        topping2 = form['topping2'].split()
+        print(topping2)
+        str_topping2 = topping2[0]
+        str_topping2_value = topping2[1].split('$')
+        topping2_price = float(str_topping2_value[1])
+        print(topping2_price)
+
+        topping3 = form['topping3'].split()
+        print(topping3)
+        str_topping3 = topping3[0]
+        str_topping3_value = topping3[1].split('$')
+        topping3_price = float(str_topping3_value[1])
+        print(form['price'])
+
+        subtotal = float(form['price']) + topping1_price + topping2_price + topping3_price
+        total_price = round(subtotal, 2) 
+
         new_toppings = cls (
-            topping1 = form['topping1'],
-            topping2 = form['topping2'],
-            topping3 = form['topping3'],
-            price = form['price']
+            topping1 = str_topping1,
+            topping2 = str_topping2,
+            topping3 = str_topping3,
+            price = total_price,
         )
         db.session.add(new_toppings)
         db.session.commit()
         return new_toppings
 
     @classmethod
-    def delete(cls, topping):
-        db.session.delete(topping)
+    def delete(cls, id):
+        delete_topping = Topping.query.get(id)
+        db.session.delete(delete_topping)
         db.session.commit()
 
     @classmethod
@@ -284,6 +337,12 @@ class Topping(db.Model):
         get_all_toppings = cls.query.all()
         return get_all_toppings
 
+    @classmethod
+    def add(cls, user_id, topping_id):
+        add_order_to_table = cls.query.get(topping_id)
+        user = User.query.get(user_id)
+        add_order_to_table.order_who_have_this_topping.append(user)
+        db.session.commit()
 
 # class Order(db.Model):
 #     __tablename__='orders'

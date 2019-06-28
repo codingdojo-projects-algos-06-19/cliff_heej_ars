@@ -17,6 +17,8 @@ def dashboard():
                             user = current_user)
 
 def new():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     return render_template('index.html')
 
 def register_page():
@@ -48,12 +50,16 @@ def logout():
     return redirect(url_for('users:new'))
 
 def account():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     current_user = User.query.get(session['user_id'])
     user_address = current_user.addresses[0]
     print(user_address)
     return render_template('user_account.html', user = current_user, address = user_address)
 
 def user_update():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     user_id = session['user_id']
     update_user = User.edit_user(user_id, request.form)
     user = User.query.get(user_id)
@@ -66,9 +72,12 @@ def pizza_dashboard():
     # method = Method.get_all_methods()
     # crust = Crust.get_all_crust()
     # topping_menu = Topping_Menu.get_all_toppings()
-    return render_template('new_order.html')
+    topping = Topping.get_all()
+    return render_template('new_order.html', topping = topping)
 
 def pizza_create():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     pizza = Order.create_order(request.form)
     toppings = Topping.new(request.form)
     session['pizza_id'] = pizza
@@ -76,12 +85,26 @@ def pizza_create():
 
 #order page
 def order_page():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     pizza = Order.get_order()
     topping = Topping.get_all()
+    total = Order.total
 
-    return render_template('order.html', pizza = pizza, topping = topping)
+    return render_template('order.html', pizza = pizza, topping = topping, total = total)
 
+def order_delete(id):
+    print(request.form)
+    delete = Order.delete(id)
+    return redirect(url_for('order'))
 
+def add(topping_id):
+    Topping.add(session['user_id'], topping_id)
+    return redirect(url_for('order'))
+
+def topping_delete(id):
+    Topping.delete(id)
+    return redirect(url_for('order'))
 
 # #create apge
 # def create_page():

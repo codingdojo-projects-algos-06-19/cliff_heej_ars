@@ -23,10 +23,11 @@ app.add_url_rule('/users/update', view_func=controllers.user_update, endpoint='u
 #Pizza
 app.add_url_rule('/pizza/dashboard', view_func=controllers.pizza_dashboard, endpoint='pizza:dashboard')
 app.add_url_rule('/pizza/create', view_func=controllers.pizza_create, endpoint='pizza:create', methods=['POST'])
-
+app.add_url_rule('/pizza/<id>/delete', view_func=controllers.topping_delete)
 #Oder
 app.add_url_rule('/order', view_func=controllers.order_page, endpoint='order')
-
+app.add_url_rule('/order/<id>/delete', view_func=controllers.order_delete, endpoint='order:<id>:delete')
+app.add_url_rule('/order/<topping_id>/add', view_func = controllers.add)
 # #create size, method, crust, toppings
 # app.add_url_rule('/create_page', view_func=controllers.create_page, endpoint='create_page')
 # app.add_url_rule('/create_topping', view_func=controllers.create_topping, endpoint='create:topping', methods=['POST'])
