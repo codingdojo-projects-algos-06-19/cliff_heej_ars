@@ -40,20 +40,14 @@ class User(db.Model):
     def register_validation(cls, form):
         print(form)
         errors=[]
-        if len(form['first_name']) < 1:
-            errors.append('Please enter your first name!')
-        if len(form['last_name']) < 1:
-            errors.append('Please enter your last name!')
+        if len(form['first_name']) < 1 or len(form['last_name']) < 1 or len(form['email']) < 1 or len(form['street']) < 1 or len(form['city']) < 1 or len(form['state']) < 1 or len(form['zip_code']) < 1 or len(form['phone']) < 1 or len(form['password']) < 1 or len(form['confirm_password']) < 1:
+            errors.append('Please make sure you enter all the fields!')
+            return errors
         if not EMAIL_REGEX.match(form['email']):
             errors.append("Please enter valid email address!")
-        if len(form['phone']) < 9:
-            errors.append("Please enter valid 10 digit phone number")
+            
         if not PHONE_REGEX.match(form['phone']):
             errors.append("Please enter valid 10 digit phone number")
-        if len(form['state']) < 1:
-            errors.append('Please enter your state')
-        if len(form['city']) < 1:
-            errors.append('Please enter your city')
 
     #validate if email is already registered
         existing_emails = cls.query.filter_by(email=form['email']).first()
