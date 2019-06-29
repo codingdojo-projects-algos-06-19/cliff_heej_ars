@@ -17,8 +17,6 @@ def dashboard():
                             user = current_user)
 
 def new():
-    if 'user_id' not in session:
-        return redirect(url_for('users:new'))
     return render_template('index.html')
 
 def register_page():
