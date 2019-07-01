@@ -6,10 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
 </head>
 <body class="pic">
     <div class="wrapper">
-        <a href="{{ url_for('dashboard') }}">Home</a>
+        <h3>Make an Order!</h3>
+        <div>
+            <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('users:account') }}">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('users:logout') }}">logout</a>
+                    </li>
+        </div>
+
         <h3>{{ user.first_name }}'s account</h3>
         <div class="account_info">
             <p>name: {{ user.first_name }} {{ user.last_name }}</p>
@@ -18,24 +35,32 @@
             <p>Created on: {{ user.created_at }}</p>
         </div>
         <h1>UPDATE</h1>
-        <form action="{{ url_for('users:update') }}" method="post">
-            <label for="first_name">Name:</label>
-            <input type="text" name="first_name" id="" placeholder="{{ user.first_name }}">
-            <input type="text" name="last_name" id="" placeholder="{{ user.last_name }}">
-
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="" placeholder="{{ user.email }}">
-
-            <label for="phone">Phone Number:</label>
-            <input type="text" name="phone" id="" placeholder="{{ user.phone }}">
-
-            <label for="first_name">Address:</label>
-            <input type="text" name="street" id="" placeholder="{{ address.street }}">
-            <input type="text" name="city" id="" placeholder="{{ address.city }}">
-            <input type="text" name="state" id="" placeholder="{{ address.state }}">
-            <input type="text" name="zip_code" id="" placeholder="{{ address.zip_code }}">
-            <input type="submit" value="update">
-        </form>
+        <div class="container">
+            <form action="{{ url_for('users:update') }}" method="post">
+                <div class = "form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" name="first_name" id="" placeholder="{{ user.first_name }}">
+                </div>
+                <div class = "form-group">
+                    <label for="last_name">Last Name:</label> 
+                    <input type="text" class="form-control" name="last_name" id="" placeholder="{{ user.last_name }}">
+                </div>
+                <div class = "form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" name="email" id="" placeholder="{{ user.email }}">
+                </div>
+                <div class = "form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" class="form-control" name="phone" id="" placeholder="{{ user.phone }}">
+                </div>
+                <label for="first_name">Address:</label>
+                <input type="text"  class="form-control" name="street" id="" placeholder="{{ address.street }}">
+                <input type="text" class="form-control" name="city" id="" placeholder="{{ address.city }}">
+                <input type="text" class="form-control" name="state" id="" placeholder="{{ address.state }}">
+                <input type="text" class="form-control" name="zip_code" id="" placeholder="{{ address.zip_code }}">
+                <input type="submit" class="btn btn-primary" value="update">
+            </form>
+        </div>
     </div>
 </body>
 </html>

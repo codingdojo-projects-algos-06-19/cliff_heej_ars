@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 66c77076d655
+Revision ID: b467eb57b64d
 Revises: 
-Create Date: 2019-06-28 00:22:25.864654
+Create Date: 2019-06-30 20:32:24.575690
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '66c77076d655'
+revision = 'b467eb57b64d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -63,18 +63,20 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('orders_topping',
-    sa.Column('topping_id', sa.Integer(), nullable=False),
-    sa.Column('order_id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('order_id', sa.Integer(), nullable=True),
+    sa.Column('topping_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
     sa.ForeignKeyConstraint(['topping_id'], ['toppings.id'], ),
-    sa.PrimaryKeyConstraint('topping_id', 'order_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user_order',
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('order_id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('order_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('user_id', 'order_id')
+    sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
 

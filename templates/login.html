@@ -4,53 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/my_style.css">
-   
+    <title>PizzCHA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Poppins|Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
+  
 </head>
-<body class="pic">
-    <div class="wrapper">
-        <div>
-            
-            <ul class="nav nav-tabs">
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
+        </div>
+        <div class="header_info">
+            <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('users:new') }}"><h5>Welcome to Pizza Pette's</h5></a>
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('users:register_page') }}"><h5>Create an Account</h5></a>
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ url_for('users:login_page') }}"><h5>Already have an Account? Login</h5></a>
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Account</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Login</a>
+                </li>    
             </ul>
         </div>
     </div>
-    <div class="container">
 
-    <h3>Login</h3>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form action="{{ url_for('users:login') }}" method="post">
-    <div class = "form-group">
-        <label for="email">Email:</label>
-        <input class="form-control" type="email" name="email" class='text-field' placeholder="Email">
+    <div class="center">
+        <div class="login-box">
+            <div class="left-box">
+                <h1>Login</h1>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="{{ url_for('users:login') }}" method="post">
+                    <!-- <div class = "form-group"> -->
+                       
+                        <input type="email" name="email" class='text-field' placeholder="Email">
+                    <!-- </div>
+                    <div class = "form-group"> -->
+                      
+                        <input type="password" name="password" class='text-field' placeholder="Password">
+                    <!-- </div> -->
+                        <input type="submit" class="btn btn-primary" value="Login">
+                </form>
+                <a class="nav-link1" href="{{ url_for('users:register_page') }}">Don't have account? Register</a>
+            </div>
+            <div class="right-box">
+                <span class="signinwith">Sign in with<br/> Social Network</span>
+            <button class="social facebook">Login in with Facebook</button>
+            <button class="social twitter">Login in with Twitter</button>
+            <button class="social google">Login in with Google</button>
+            </div>
+            <div class="or">
+                OR
+            </div>
+        </div>
     </div>
-    <div class = "form-group">
-        <label for="password">Password:</label> 
-        <input class="form-control" type="password" name="password" class='text-field' placeholder="Password">
+    <div class="footer">
+        <div class="info">
+                <p>Any concerns or great feedback. Call toll Free (877) 339-5855</p>
+                <a id="orders" href=""><span>feedback@pizzatime.com</span></a>
+                <p>©2019 Iv_Ars_Heej Software</p>
+        </div>
     </div>
-    
-        <input type="submit" class="btn btn-primary" value="Login">
-
-    </form>
 </body>
 </html>
+

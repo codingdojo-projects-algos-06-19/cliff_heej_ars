@@ -9,15 +9,12 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PW_REGEX = re.compile('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$')
 PHONE_REGEX=re.compile('^\d{3}\d{3}\d{4}$')
 
-orders_topping_table = db.Table('orders_topping',
-                    db.Column('topping_id', db.Integer, db.ForeignKey('toppings.id'), primary_key=True),
-                    db.Column('order_id', db.Integer, db.ForeignKey('orders.id'), primary_key=True)
-                    )
 
-user_order_table = db.Table('user_order',
-                    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-                    db.Column('order_id', db.Integer, db.ForeignKey('orders.id'), primary_key=True)
-                    )
+
+# user_order_table = db.Table('user_order',
+#                     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#                     db.Column('order_id', db.Integer, db.ForeignKey('orders.id'), primary_key=True)
+#                     )
 
 #make Users' table 
 class User(db.Model):
@@ -30,9 +27,6 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
-
-    #many to many relationship between order and user 
-    pizza_this_user_order = db.relationship('Order', secondary=user_order_table)
 
 
     #To validate if user enter correct information
@@ -180,10 +174,6 @@ class Order(db.Model):
     price = db.Column(db.Float)
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
-    #many to many relationship between order to user
-    user_who_order_this_order = db.relationship('User', secondary=user_order_table)
-    #many to many relationship between order and topping
-    toppings_this_order_have = db.relationship('Topping', secondary=orders_topping_table)
 
     @classmethod
     def total(cls):
@@ -263,6 +253,23 @@ class Order(db.Model):
         db.session.delete(delete_order)
         db.session.commit()
 
+class Orders_Topping(db.Model):
+    __tablename__='orders_topping'
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    order = db.relationship('Order', foreign_keys=[order_id], backref=db.backref('orders_topping'), cascade='all')
+    topping_id = db.Column(db.Integer, db.ForeignKey('toppings.id'))
+    topping = db.relationship('Topping', foreign_keys=[topping_id], backref=db.backref('orders_topping'), cascade='all')
+
+class User_Order(db.Model):
+    __tablename__='user_order'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', foreign_keys=[user_id], backref= db.backref('user_order'), cascade='all')
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    order = db.relationship('Order', foreign_keys=[order_id], backref=db.backref('user_order'), cascade='all')
+
+
 
     # @classmethod
     # def total(cls, id):
@@ -284,7 +291,6 @@ class Topping(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     #many to many relationship btw topping and order
-    order_who_have_this_topping = db.relationship('Order', secondary=orders_topping_table)
     
 
     @classmethod

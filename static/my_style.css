@@ -63,3 +63,7 @@ h3{
 .container h1 {
     color: #c1682f;
 }
+
+form {
+    margin-bottom: 20px;
+}

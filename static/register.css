@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush|Knewave|Shojumaru&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush|Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Knewave&display=swap');
+* {
+    
+}
+body {
+    margin: 0;
+}
+
+ul.nav {
+    margin: 0px;
+    float: right;
+}
+li {
+    font-family: 'Kalam', cursive;
+    display: inline-block;
+    /* float: left; */
+    padding: 10px;
+    font-size: 16px;
+    line-height: 5px;
+    text-align: center;
+}
+.logo {
+
+    text-align: center;
+    margin-right: 100px;
+}
+.logo img {
+    height: 150px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.nav-link {
+    color: rgb(241, 236, 236);
+}
+.nav-link:hover {
+    color: rgb(233, 182, 15);
+}
+.header_info {
+    background-color: rgba(3, 3, 3);
+    height: 40px;
+    margin: 0px;
+    border-bottom: 2px solid rgb(236, 175, 62);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.50);
+}
+.center {
+    background-image: url('../static/yellowslice.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    padding:50px;
+}
+.welcome {
+    background-color:rgba(235, 235, 235, 0.5)
+}
+

@@ -66,6 +66,8 @@ def user_update():
 
 #pizza controllers
 def pizza_dashboard():
+    if 'user_id' not in session:
+        return redirect(url_for('users:new'))
     # size = Size.get_all_size()
     # method = Method.get_all_methods()
     # crust = Crust.get_all_crust()
@@ -84,7 +86,7 @@ def pizza_create():
 #order page
 def order_page():
     if 'user_id' not in session:
-        return redirect(url_for('users:new'))
+        return redirect(url_for('users:login_page'))
     pizza = Order.get_order()
     topping = Topping.get_all()
     total = Order.total

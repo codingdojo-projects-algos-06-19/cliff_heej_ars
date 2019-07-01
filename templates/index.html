@@ -1,6 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PizzCHA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Poppins|Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
+        </div>
+        <div class="header_info">
+
+        </div>
+    </div>
+    <div class="center">
+        <div class="welcome">
+            <h1>WELCOME!</h1>
+                
+            <h1>WELCOME!</h1>
+            <a class="nav-link" href="{{ url_for('order') }}"><h1>LARGE ONE TOPPING $5</h1></a>
+            <div class="box">
+                <a class="nav-link" href="{{ url_for('order') }}"><h2>LET'S ORDER!</h2></a>
+            </div>
+            <h1>WELCOME!</h1>
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class="info">
+            <p>Any concerns or great feedback. Call toll Free (877) 339-5855</p>
+            <a id="orders" href=""><span>feedback@pizzatime.com</span></a>
+            <p>©2019 Iv_Ars_Heej Software</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,9 +61,10 @@
 
 </head>
 <body class="pic">
+
     <div class="wrapper">
         <div>
-            <!-- Brand/logo -->
+            Brand/logo
            
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -35,8 +87,8 @@
         </div>
     </div>
     
-    <!-- <a href="/pizza/dashboard">New Order</a>
+    <a href="/pizza/dashboard">New Order</a>
     <a href="">Re-Order My Fave</a>
-    <a href="">Suprise Me</a> -->
+    <a href="">Suprise Me</a>
 </body>
-</html>
+</html> -->
