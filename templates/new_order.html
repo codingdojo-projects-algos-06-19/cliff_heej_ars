@@ -32,11 +32,11 @@
                 <option value="Thick $4.99">Thick Crust $4.99</option>
             </select>
             <label for="qty">QTY</label>
-            <input type="number" name="qty" id="" value="1">
+            <input type="number" name="qty" id="">
 
 
     </div>
-        <div>
+        <div class="wrapper" style="margin-top: 20px;">
             <h3>Toppings</h3>
             <div class="Toppings">
                 <div>
@@ -86,7 +86,7 @@
                     <!-- {% for toppings in topping %}
                         <a href="/order/{{ topping['id'] }}/add">ADD</a>
                     {% endfor %} -->
-                        <input type="submit" value="ADD TO ORDER">
+                        <input type="submit" class="btn btn-primary" value="ADD TO ORDER">
                 </div>
         </div>
         </form>
@@ -100,7 +100,6 @@
             <input type="checkbox" name='topping' value="cheese">cheese
             <input type="checkbox" name='topping' value="cheese">cheese
             <input type="checkbox" name='topping' value="cheese">cheese -->
-        </form>
     </div>
     <div class="footer">
         <div class="info">
