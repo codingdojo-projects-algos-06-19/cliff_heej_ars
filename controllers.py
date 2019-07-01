@@ -73,7 +73,9 @@ def pizza_dashboard():
     # crust = Crust.get_all_crust()
     # topping_menu = Topping_Menu.get_all_toppings()
     topping = Topping.get_all()
-    return render_template('new_order.html', topping = topping)
+    current_user = User.query.get(session['user_id'])
+
+    return render_template('new_order.html', topping = topping, user = current_user)
 
 def pizza_create():
     if 'user_id' not in session:
@@ -90,8 +92,8 @@ def order_page():
     pizza = Order.get_order()
     topping = Topping.get_all()
     total = Order.total
-
-    return render_template('order.html', pizza = pizza, topping = topping, total = total)
+    current_user = User.query.get(session['user_id'])
+    return render_template('order.html', pizza = pizza, topping = topping, total = total, user = current_user)
 
 def order_delete(id):
     print(request.form)

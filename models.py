@@ -199,8 +199,8 @@ class Order(db.Model):
         print(form['price'])
 
         subtotal = float(form['price']) + size_price + crust_price
-        total = float(form['qty']) * subtotal
-        total_price = round(total, 2) 
+        # total = float(form['qty']) + subtotal
+        total_price = round(subtotal, 2) 
 
         order = cls (
             method = form['method'],

@@ -4,63 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>PizzCHA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Poppins|Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+  
 </head>
-<body class="pic">
-    <div class="wrapper">
-        <h3>Make an Order!</h3>
-        <div>
-            <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for('order') }}">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('users:logout') }}">logout</a>
-                    </li>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
+        </div>
+        <div class="header_info">
+            <h2>welcome {{ user.first_name }}</h2>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:logout') }}">Logout</a>
+                </li>    
+            </ul>
         </div>
     </div>
-    
-    <div class="wrapper" style="margin-top:20px;">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Qty</th>
-                        <th>Size</th>
-                        <th>Crust</th>
-                        <th>Toppings</th>
-                        <th>Subtotal</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pizzas in pizza %}
-                    <tr>
-                        <th>{{ pizzas.qty }}</th>
-                        <th>{{ pizzas.size }}</th>
-                        <th>{{ pizzas.crust }}</th>
-                        {% for toppings in topping %}
-                        <th>{{ toppings.topping1 }} {{ toppings.topping2 }} {{ toppings.topping3 }}</th>
-                        <a class="nav-link" href="/pizza/{{toppings.id}}/delete">Delete Topping</a>
-                        <th>${{ pizzas.price + toppings.price }}</th>
+
+    <div class="center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Qty</th>
+                            <th>Size</th>
+                            <th>Crust</th>
+                            <th>Toppings</th>
+                            <th>Subtotal</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pizzas in pizza %}
+                        <tr>
+                            <th>{{ pizzas.qty }}</th>
+                            <th>{{ pizzas.size }}</th>
+                            <th>{{ pizzas.crust }}</th>
+                            {% for toppings in topping %}
+                            <th>{{ toppings.topping1 }} {{ toppings.topping2 }} {{ toppings.topping3 }}</th>
+                                <a class="nav-link" href="/pizza/{{toppings.id}}/delete">Delete Topping</a>
+                            <th>${{ pizzas.price + toppings.price }}</th>
+                            {% endfor %}
+                            <th><a class="nav-link" href="/order/{{pizzas.id}}/delete">Delete</a></th>
+
+                            
+                        </tr>
                         {% endfor %}
-                        <th><a class="nav-link" href="/order/{{pizzas.id}}/delete">Delete</a></th>
-
                         
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            <div class="welcome">
+                <div class="box">
+                    <a class="nav-link" href="{{ url_for('pizza:dashboard') }}"><h1>LET'S ORDER!</h1></a>
+                </div>
+            </div>
+        </div>
     </div>
-
 
    
 </body>

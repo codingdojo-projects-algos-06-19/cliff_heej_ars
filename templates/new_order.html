@@ -4,102 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>PizzCHA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Poppins|Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+  
 </head>
-<body class="pic">
-    <div class="wrapper">
-        <h3 class="header">CRAFT-A-PIZZA</h3>
-            <a href="{{ url_for('dashboard') }}">Home</a>
-
-        <form action="{{ url_for('pizza:create') }}" method="post">
-            <label for="method">Method</label>
-            <select name="method" id="">
-                <option value="Delievery">Delievery</option>
-                <option value="Carry Out">Carry Out</option>
-            </select>
-            <label for="size">Size</label>
-            <select name="size" id="">
-                <option value="Large $3.99">Large $3.99</option>
-                <option value="Medium $2.99">Medium $2.99</option>
-                <option value="Small $1.99">Small $1.99</option>
-            </select>
-            <label for="crust">Crust</label>
-            <select name="crust" id="">
-                <option value="Thin $2.99">Thin Crust $2.99</option>
-                <option value="Regular $1.99">Regular $1.99</option>
-                <option value="Thick $4.99">Thick Crust $4.99</option>
-            </select>
-            <label for="qty">QTY</label>
-            <input type="number" name="qty" id="">
-
-
-    </div>
-        <div class="wrapper" style="margin-top: 20px;">
-            <h3>Toppings</h3>
-            <div class="Toppings">
-                <div>
-                    <h3>Meats</h3>
-                    <label for="topping1">Toppings</label>
-                        <select name="topping1" id="">
-                            <option value="Peperoni $1.99">Peperoni</option>
-                            <option value="Sausage $1.99">Sausage</option>
-                            <option value="Chicken $2.99">Chicken</option>
-                            <option value="Hamburger $1.99">Hamburger</option>
-                            <option value="Ham $1.99">Ham</option>
-                            <option value="ShreddedBBQPork $1.99">Shredded BBQ Pork</option>
-                            <option value="Halibut $1.99">Halibut</option>
-                        </select>
-                        <input type="number" name="price" value="1.99" id="">
-
-                </div>
-                <div>
-                    <h3>Vegetables</h3>
-                        <label for="topping2">Toppings</label>
-                        <select name="topping2" id="veggies">
-                            <option value="Spinach $1.99">Spinach</option>
-                            <option value="Artichoke $1.99">Artichoke</option>
-                            <option value="RedbellPeppers $1.99">Redbell Peppers</option>
-                            <option value="GreenbellPeppers $1.99">Greenbell Peppers</option>
-                            <option value="BananaPeppers $1.99">Banana Peppers</option>
-                            <option value="RedOnions $1.99">Red Onions</option>
-                            <option value="Tomatoes $1.99">Tomatoes</option>
-                            <option value="Mushrooms $1.99">Mushrooms</option>
-                            <option value="Olives $1.99">Olives</option>       
-                        </select>
-                        <input type="number" name="price" value="1.99" id="">
-   
-                </div>
-                <div>
-                    <h3>Cheeses</h3>
-                    <label for="topping3">Cheese</label>
-                        <select name="topping3" id="veggies">
-                            <option value="Mozzarella $1.99">Mozzarella</option>
-                            <option value="Feta $1.99">Feta</option>
-                            <option value="Cheddar $1.99">Cheddar</option>
-                            <option value="MeltedCheddar $1.99">Melted Cheddar</option>
-                            <option value="GoudaCheese $1.99">Gouda Cheese</option>
-                            <option value="Provolone $1.99">Provolone</option>
-                        </select>
-                        <input type="number" name="price" value="1.99" id="">
-                    <!-- {% for toppings in topping %}
-                        <a href="/order/{{ topping['id'] }}/add">ADD</a>
-                    {% endfor %} -->
-                        <input type="submit" class="btn btn-primary" value="ADD TO ORDER">
-                </div>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
         </div>
-        </form>
-            <!-- <input type="checkbox" name='topping' value="Peperoni">cheese
-            <input type="checkbox" name='topping' value="Sausage">cheese
-            <input type="checkbox" name='topping' value="Hamburger">cheese
-            <input type="checkbox" name='topping' value="Ex-Cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese
-            <input type="checkbox" name='topping' value="cheese">cheese -->
+        <div class="header_info">
+            <h2>welcome {{ user.first_name }}</h2>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:logout') }}">Logout</a>
+                </li>    
+            </ul>
+        </div>
+    </div>
+
+    <div class="center">
+        <div class="wrapper">
+            <h1 class="header">CRAFT-A-PIZZA</h1>
+
+            <form action="{{ url_for('pizza:create') }}" method="post">
+                <label for="method">Method</label>
+                <select name="method" id="">
+                    <option value="Delievery">Delievery</option>
+                    <option value="Carry Out">Carry Out</option>
+                </select>
+                <label for="size">Size</label>
+                <select name="size" id="">
+                    <option value="Large $3.99">Large $3.99</option>
+                    <option value="Medium $2.99">Medium $2.99</option>
+                    <option value="Small $1.99">Small $1.99</option>
+                </select>
+                <label for="crust">Crust</label>
+                <select name="crust" id="">
+                    <option value="Thin $2.99">Thin Crust $2.99</option>
+                    <option value="Regular $1.99">Regular $1.99</option>
+                    <option value="Thick $4.99">Thick Crust $4.99</option>
+                </select>
+                <label for="qty">QTY</label>
+                <input type="number" name="qty" id="">
+
+
+        </div>
+            <div class="wrapper" style="margin-top: 20px;">
+                <h3>Toppings</h3>
+                <div class="Toppings">
+                    <div>
+                        <h3>Meats</h3>
+                        <label for="topping1">Toppings</label>
+                            <select name="topping1" id="">
+                                <option value="Peperoni $1.99">Peperoni</option>
+                                <option value="Sausage $1.99">Sausage</option>
+                                <option value="Chicken $2.99">Chicken</option>
+                                <option value="Hamburger $1.99">Hamburger</option>
+                                <option value="Ham $1.99">Ham</option>
+                                <option value="ShreddedBBQPork $1.99">Shredded BBQ Pork</option>
+                                <option value="Halibut $1.99">Halibut</option>
+                            </select>
+                            <input type="number" name="price" value="1.99" id="">
+
+                    </div>
+                    <div>
+                        <h3>Vegetables</h3>
+                            <label for="topping2">Toppings</label>
+                            <select name="topping2" id="veggies">
+                                <option value="Spinach $1.99">Spinach</option>
+                                <option value="Artichoke $1.99">Artichoke</option>
+                                <option value="RedbellPeppers $1.99">Redbell Peppers</option>
+                                <option value="GreenbellPeppers $1.99">Greenbell Peppers</option>
+                                <option value="BananaPeppers $1.99">Banana Peppers</option>
+                                <option value="RedOnions $1.99">Red Onions</option>
+                                <option value="Tomatoes $1.99">Tomatoes</option>
+                                <option value="Mushrooms $1.99">Mushrooms</option>
+                                <option value="Olives $1.99">Olives</option>       
+                            </select>
+                            <input type="number" name="price" value="1.99" id="">
+    
+                    </div>
+                    <div>
+                        <h3>Cheeses</h3>
+                        <label for="topping3">Cheese</label>
+                            <select name="topping3" id="veggies">
+                                <option value="Mozzarella $1.99">Mozzarella</option>
+                                <option value="Feta $1.99">Feta</option>
+                                <option value="Cheddar $1.99">Cheddar</option>
+                                <option value="MeltedCheddar $1.99">Melted Cheddar</option>
+                                <option value="GoudaCheese $1.99">Gouda Cheese</option>
+                                <option value="Provolone $1.99">Provolone</option>
+                            </select>
+                            <input type="number" name="price" value="1.99" id="">
+                        <!-- {% for toppings in topping %}
+                            <a href="/order/{{ topping['id'] }}/add">ADD</a>
+                        {% endfor %} -->
+                            <input type="submit" class="btn btn-primary" value="ADD TO ORDER">
+                    </div>
+            </div>
+            </form>
+                <!-- <input type="checkbox" name='topping' value="Peperoni">cheese
+                <input type="checkbox" name='topping' value="Sausage">cheese
+                <input type="checkbox" name='topping' value="Hamburger">cheese
+                <input type="checkbox" name='topping' value="Ex-Cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese
+                <input type="checkbox" name='topping' value="cheese">cheese -->
+        </div>
     </div>
     <div class="footer">
         <div class="info">

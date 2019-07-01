@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>PizzCHA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Knewave|Poppins|Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
+  
 </head>
-<body class="pic">
-    <div class="wrapper">
-        <h3>Make an Order!</h3>
-        <div>
-            <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for('users:account') }}">Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('users:logout') }}">logout</a>
-                    </li>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
         </div>
+        <div class="header_info">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('order') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:account') }}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users:logout') }}">Logout</a>
+                </li>    
+            </ul>
+        </div>
+    </div>
 
+    <div class="center">
+        <h2>welcome {{ user.first_name }}</h2>
         <h3>{{ user.first_name }}'s account</h3>
         <div class="account_info">
             <p>name: {{ user.first_name }} {{ user.last_name }}</p>
