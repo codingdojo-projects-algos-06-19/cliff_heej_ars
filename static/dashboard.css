@@ -105,13 +105,13 @@ li {
     margin-left: auto;
     display: block;
     width: auto;
-    height: 150px;
+    height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
     background-image: url("/static/bigslice.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 30px;
+    padding: 50px;
 }
 .box2 {
     font-family: 'knewave', cursive;
@@ -123,13 +123,13 @@ li {
     /* margin-left: 30px;
     margin-right: 20px; */
     width: auto;
-    height: 150px;
+    height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
     background-image: url("/static/freshslice.png");
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 30px;
+    padding: 50px;
 }
 .box3 {
     font-family: 'knewave', cursive;
@@ -141,13 +141,13 @@ li {
     margin-right: 20px; */
     display: block;
     width: auto;
-    height: 150px;
+    height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
     background-image: url("/static/indexPic.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 30px;
+    padding: 50px;
 }
 /* h1 {
     margin-top: 20px;
@@ -160,6 +160,7 @@ li {
 .footer {
     text-align: center;
     margin-top: 10px;
+    
 }
 .info p {
     margin: 0px;
@@ -181,3 +182,30 @@ h6 {
     opacity: 0;
     font-size: 1px;
 }
+.StripeElement {
+    box-sizing: border-box;
+  
+    height: 40px;
+  
+    padding: 10px 12px;
+  
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+  
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+  }
+  
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+  
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+  
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }

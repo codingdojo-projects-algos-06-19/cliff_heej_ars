@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/static/order.css">
   
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha1.png"></a>
         </div>
         <div class="header_info">
             <h2>welcome {{ user.first_name }}</h2>
@@ -68,6 +68,21 @@
                         
                     </tbody>
                 </table>
+                <form action="{{ url_for('order:charge') }}" method="post">
+
+                    <label for="card-element">
+                            Credit or debit card
+                    </label>
+                    <div id="card-element" class="form-control StripeElement StripeElement--empty StripeElement--invalid">
+                            <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                    
+                        <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+        
+                    <input type="submit" value="Submit Payment" class="btn btn-primary"> 
+                      <!-- <button>Submit Payment</button> -->
+                </form>
             <div class="welcome">
                 <div class="box">
                     <a class="nav-link" href="{{ url_for('pizza:dashboard') }}"><h1>LET'S ORDER!</h1></a>
@@ -77,5 +92,7 @@
     </div>
 
    
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{url_for('static', filename='payment.js')}}"></script>
 </body>
 </html>

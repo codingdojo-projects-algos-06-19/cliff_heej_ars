@@ -1,5 +1,12 @@
 from flask import render_template, redirect, request, session, flash, url_for, Response
-from models import User, Order, Topping, Address
+import stripe
+from models import User, Order, Topping, Address, Random_order
+
+pub_key = 'pk_test_LnWQOJnxHrgUjxeLPUQHOFf100IknAvSln'
+secret_key = 'sk_test_pcRm5ZoW1TZHWdWGW8dAAqqZ00lNAjivvG'
+
+
+stripe.api_key = secret_key
 
 #Register page 
 def root():
@@ -41,6 +48,7 @@ def login():
         flash(response)
         return redirect(url_for('users:login_page'))
     session['user_id'] = response
+    session['email'] = request.form['email']
     return redirect(url_for('dashboard'))
 
 def logout():
@@ -108,19 +116,31 @@ def topping_delete(id):
     Topping.delete(id)
     return redirect(url_for('order'))
 
-# #create apge
-# def create_page():
-#     size = Size.get_all_size()
-#     method = Method.get_all_methods()
-#     crust = Crust.get_all_crust()
-#     topping_menu = Topping_Menu.get_all_toppings()
-#     return render_template('staff.html', size = size, method = method, crust = crust, topping_menu = topping_menu)
+#create apge
+def create_page():
+    random_pizza = Random_order.all_random_pizza()
+    return render_template('staff.html', random = random_pizza)
 
-# def create_topping():
-#     topping_id = Topping_Menu.new(request.form)
-#     session['topping_id'] = topping_id
-#     return redirect(url_for('create_page'))
+def create_random_pizza():
+    random_order_id = Random_order.new_pizza(request.form)
+    # topping_id = Topping_Menu.new(request.form)
+    session['random_order_id'] = random_order_id
+    return redirect(url_for('create_page'))
 
+def order_success():
+    current_user = User.query.get(session['user_id'])
+    return render_template('success.html', user = current_user)
+
+def charge_order():
+    print(request.form)
+    # user = stripe.Customer.create(email=session['user_id'], source = request.form['stripeToken'])
+    # charge = stripe.Charge.create(
+    #     user = user.id,
+    #     total = int(float(request.form['total'])*100),
+    #     currency = 'usd',
+    #     source = request.form
+    # )
+    return redirect(url_for('success'))
 # def create_size():
 #     size_id = Size.create_size(request.form)
 #     session['size_id'] = size_id

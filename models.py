@@ -199,18 +199,21 @@ class Order(db.Model):
         print(form['price'])
 
         subtotal = float(form['price']) + size_price + crust_price
-        # total = float(form['qty']) + subtotal
-        total_price = round(subtotal, 2) 
+        total = float(form['qty']) * subtotal
+        total_price = round(total, 2)
+        qty = form['qty']
 
+        
+        # if float(qty) < 1:
+        #     qty="1"
         order = cls (
             method = form['method'],
             size = str_size,
             crust = str_crust,
-            qty = form['qty'],
+            qty = qty,
             price = total_price,
 
         )
-
         db.session.add(order)
         db.session.commit()
         
@@ -343,7 +346,66 @@ class Topping(db.Model):
         user = User.query.get(user_id)
         add_order_to_table.order_who_have_this_topping.append(user)
         db.session.commit()
+class Random_order(db.Model):
+    __tablename__ = 'random_orders'
+    id = db.Column(db.Integer, primary_key = True)
+    size = db.Column(db.String(255))
+    crust = db.Column(db.String(255))
+    topping1 = db.Column(db.String(255))
+    topping2 = db.Column(db.String(255))
+    topping3 = db.Column(db.String(255))
+    price = db.Column(db.Float)
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
 
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    order = db.relationship('Order', foreign_keys=[order_id], backref=db.backref('orders'), cascade='all')
+
+    @classmethod 
+    def new_pizza(cls, form):
+
+        new_pizzas = cls (
+ 
+            size = form['size'],
+            crust = form['crust'],
+            topping1 = form['topping1'],
+            topping2 = form['topping2'],
+            topping3 = form['topping3'],
+            price = form['price'],
+        )
+        db.session.add(new_pizzas)
+        db.session.commit()
+        return new_pizzas
+
+    @classmethod
+    def all_random_pizza(cls):
+        get_all_random_pizzas = cls.query.all()
+        return get_all_random_pizzas
+
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user = db.relationship('user', foreign_keys=[user_id], backref=db.backref('users'), cascade='all')
+
+
+    #     id = db.Column(db.Integer, primary_key=True)
+#     qty = db.Column(db.Integer)
+#     created_at = db.Column(db.DateTime, server_default=func.now())
+#     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate = func.now())
+
+#     #Order can have many pizza ?
+#     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+#     order = db.relationship('Order', foreign_keys=[order_id], backref=db.backref('pizzas'), cascade='all')
+
+#     #Method can have many pizza?
+#     method_id = db.Column(db.Integer, db.ForeignKey('methods.id'))
+#     method = db.relationship('Method', foreign_keys=[method_id], backref=db.backref('pizzas'), cascade='all')
+
+#     #Crust can have many pizza?
+#     crust_id = db.Column(db.Integer, db.ForeignKey('crusts.id'))
+#     crust = db.relationship('Crust', foreign_keys=[crust_id], backref=db.backref('pizzas'), cascade='all')
+
+#     #Size can have many pizza?
+#     size_id = db.Column(db.Integer, db.ForeignKey('sizes.id'))
+#     size = db.relationship('Size', foreign_keys=[size_id], backref=db.backref('pizzas'), cascade='all')
 # class Order(db.Model):
 #     __tablename__='orders'
 #     id = db.Column(db.Integer, primary_key=True)

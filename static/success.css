@@ -78,7 +78,7 @@ li {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.50);
 }
 .center {
-    /* background-image: url('../static/yellowslice.jpg'); */
+    background-image: url('../static/yellowslice.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -87,6 +87,7 @@ li {
     /* z-index: -1; */
     /* background-color: rgb(179, 179, 179) */
     text-align: center;
+    padding-top: 120px;
 }
 
 .welcome {
@@ -265,3 +266,22 @@ html {
     font-weight: 500;
     font-size: 15px;
   }
+
+
+h1 {
+    font-size: 100px;
+    color: rgb(39, 39, 39);
+    text-align: center;
+    font-family: 'Knewave', cursive;
+}
+
+.box {
+    background-color: black;
+    width: 200px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+
