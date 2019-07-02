@@ -50,7 +50,7 @@ li {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 550px;
     padding:50px;
 }
 .welcome {
@@ -76,15 +76,16 @@ li {
     height: 300px;
     margin-top: 50px;
 }
-h1 {
+/* h1 {
     font-family: 'Kalam', cursive;
     margin: 0 0 20px 0;
     font-weight: 300;
     font-size: 28px;
-}
+} */
 input[type="email"],
 input[type='password'] {
     display:block;
+    border-radius: 5px;
     box-sizing: border-box;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -142,7 +143,7 @@ input[type='submit']:focus {
     text-align: center;
 }
 .right-box .signinwith {
-    font-family: 'Kalam', cursive;
+    /* font-family: 'Kalam', cursive; */
     display: block;
     margin-bottom: 40px;
     font-size: 28px;

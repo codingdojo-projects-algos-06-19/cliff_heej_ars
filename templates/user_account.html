@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
   
 </head>
 <body>
@@ -19,6 +19,7 @@
             <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
         </div>
         <div class="header_info">
+            <h2>welcome {{ user.first_name }}</h2>
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
@@ -37,7 +38,6 @@
     </div>
 
     <div class="center">
-        <h2>welcome {{ user.first_name }}</h2>
         <h3>{{ user.first_name }}'s account</h3>
         <div class="account_info">
             <p>name: {{ user.first_name }} {{ user.last_name }}</p>

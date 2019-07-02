@@ -57,13 +57,29 @@ li {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 550px;
 }
 
 .welcome {
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Knewave', cursive;
-    background-color:rgba(235, 235, 235, 0.5)
+    /* background-color:rgba(235, 235, 235, 0.5) */
+}
+.left {
+    text-align: center;
+}
+.left h1 {
+    font-size: 100px;
+    color: rgb(179, 0, 0)
+}
+.left h2 {
+    font-size: 50px;
+}
+.left h2 span {
+    font-size: 100px;
+}
+.right {
+    text-align: right;
 }
 .footer {
     text-align: center;
@@ -76,6 +92,11 @@ li {
 }
 .box {
     background-color: black;
+    width: 200px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
 }
 
 

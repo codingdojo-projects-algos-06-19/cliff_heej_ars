@@ -16,7 +16,7 @@
 <body>
     <div class="header">
         <div class="logo">
-            <a href="{{ url_for('dashboard') }}"><img src="../static/picha.png"></a>
+            <a href="{{ url_for('dashboard') }}"><img src="../static/picha1.png"></a>
         </div>
         <div class="header_info">
             <ul class="nav">
@@ -24,14 +24,25 @@
                     <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('dashboard') }}">Orders</a>
+                    <a class="nav-link" href="{{ url_for('users:login_page') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('dashboard') }}">Account</a>
+                    <a class="nav-link" href="{{ url_for('users:register_page') }}">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('dashboard') }}">Login</a>
-                </li>    
+                <!-- <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Login</a>
+                        </li>    
+                    </ul>     -->
             </ul>
         </div>
     </div>
@@ -39,7 +50,7 @@
     <div class="center">
         <div class="login-box">
             <div class="left-box">
-                <h1>Login</h1>
+                <h3>Login</h3>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                     {% for message in messages %}
