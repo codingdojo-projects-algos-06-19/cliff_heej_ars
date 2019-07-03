@@ -46,23 +46,23 @@ li {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.50);
 }
 .center {
-    background-image: url('../static/yellowslice.jpg');
+    background-image: url('../img/yellowslice.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 550px;
-    padding:30px;
+    padding:50px;
 }
 .welcome {
     background-color:rgba(235, 235, 235, 0.5)
 }
 
-.register-box {
+.login-box {
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    height: 480px;
-    width: 800px;
+    height: 400px;
+    width: 600px;
     background: rgba(226, 226, 226, 0.6);
     box-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
@@ -71,10 +71,10 @@ li {
     top: 0;
     left: 0;
     box-sizing: border-box;
-    padding: 30px;
-    width: 530px;
-    height: 400px;
-    
+    padding: 40px;
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
 }
 /* h1 {
     font-family: 'Kalam', cursive;
@@ -82,20 +82,17 @@ li {
     font-weight: 300;
     font-size: 28px;
 } */
-
-input[type='text'],
-select[name='state'],
 input[type="email"],
 input[type='password'] {
-    display:inline-block;
+    display:block;
+    border-radius: 5px;
     box-sizing: border-box;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 4px;
     width: 220px;
     height: 32px;
     border: none;
-    border-radius: 5px;
     outline: none;
     background-color: rgba(255, 255, 255, 0.6);
     border-bottom: 1px solid #aaa;
@@ -105,9 +102,8 @@ input[type='password'] {
     transition: 0.2s ease;
 }
 input[type='submit'] {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    width: 440px;
+    margin-bottom: 28px;
+    width: 220px;
     height: 32px;
     background: #f44336;
     border: none;
@@ -131,13 +127,13 @@ input[type='submit']:focus {
     box-sizing: border-box;
     padding: 40px;
     width: 300px;
-    height: 480px;
+    height: 400px;
     background-color: rgba(226, 226, 226, 0.6)
 }
 .or {
     position: absolute;
-    top: 200px;
-    left: 480px;
+    top: 180px;
+    left: 280px;
     width: 40px;
     height: 40px;
     background: #efefef;
@@ -149,7 +145,6 @@ input[type='submit']:focus {
 .right-box .signinwith {
     /* font-family: 'Kalam', cursive; */
     display: block;
-    margin-top: 20px;
     margin-bottom: 40px;
     font-size: 28px;
     color: #242424;

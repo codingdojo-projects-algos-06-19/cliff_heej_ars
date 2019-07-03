@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/order.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/order.css">
   
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="{{ url_for('dashboard') }}"><img src="../static/picha1.png"></a>
+            <a href="{{ url_for('dashboard') }}"><img src="../static/img/picha1.png"></a>
         </div>
         <div class="header_info">
             <h2>welcome {{ user.first_name }}</h2>
@@ -38,6 +38,7 @@
     </div>
 
     <div class="center">
+        <div class="container">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -46,30 +47,35 @@
                             <th>Crust</th>
                             <th>Toppings</th>
                             <th>Subtotal</th>
-                            <th>Action</th>
+                
                         </tr>
                     </thead>
                     <tbody>
-                        {% for pizzas in pizza %}
+                            {% for pizzas in pizza %}         
                         <tr>
                             <th>{{ pizzas.qty }}</th>
                             <th>{{ pizzas.size }}</th>
                             <th>{{ pizzas.crust }}</th>
-                            {% for toppings in topping %}
+                                {% for toppings in topping %}
                             <th>{{ toppings.topping1 }} {{ toppings.topping2 }} {{ toppings.topping3 }}</th>
-                                <a class="nav-link" href="/pizza/{{toppings.id}}/delete">Delete Topping</a>
+                            <!-- <th><a class="nav-link" href="/order/{{toppings.id}}/delete">Delete</a></th> -->
                             <th>${{ pizzas.price + toppings.price }}</th>
+              
+                                {% endfor %}
+                                <th><a class="link1" href="/order/{{pizzas.id}}/delete">Delete</a></th>
                             {% endfor %}
-                            <th><a class="nav-link" href="/order/{{pizzas.id}}/delete">Delete</a></th>
-
+                      
                             
                         </tr>
-                        {% endfor %}
-                        
+                   
                     </tbody>
                 </table>
+                
+                <a class="link1" href="{{'dashboard'}}"><h4>Order More?</h4></a>           
+                      
                 <form action="{{ url_for('order:charge') }}" method="post">
-
+        </div>
+        <div class="card_container">
                     <label for="card-element">
                             Credit or debit card
                     </label>
@@ -83,6 +89,8 @@
                     <input type="submit" value="Submit Payment" class="btn btn-primary"> 
                       <!-- <button>Submit Payment</button> -->
                 </form>
+        </div>
+            
             <div class="welcome">
                 <!-- <div class="box">
                     <a class="nav-link" href="{{ url_for('pizza:dashboard') }}"><h1>LET'S ORDER!</h1></a>

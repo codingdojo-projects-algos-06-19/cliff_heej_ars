@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
   
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="{{ url_for('dashboard') }}"><img src="../static/picha1.png"></a>
+            <a href="{{ url_for('dashboard') }}"><img src="../static/img/picha1.png"></a>
         </div>
         <div class="header_info">
             <h2>welcome {{ user.first_name }}</h2>
@@ -69,7 +69,7 @@
                 <div class="Toppings">
                     <div>
                         <h3>Meats</h3>
-                        <label for="topping1">Toppings</label>
+                        <label for="topping1">Meat</label> $1.99
                             <select name="topping1" id="">
                                 <option value="Peperoni $1.99">Peperoni</option>
                                 <option value="Sausage $1.99">Sausage</option>
@@ -79,12 +79,13 @@
                                 <option value="ShreddedBBQPork $1.99">Shredded BBQ Pork</option>
                                 <option value="Halibut $1.99">Halibut</option>
                             </select>
-                            <input type="number" name="price" value="1.99" id="">
+                            <input type="hidden" name="price" value="1.99">
+                            
 
                     </div>
                     <div>
                         <h3>Vegetables</h3>
-                            <label for="topping2">Toppings</label>
+                            <label for="topping2">Veggies</label> $1.99
                             <select name="topping2" id="veggies">
                                 <option value="Spinach $1.99">Spinach</option>
                                 <option value="Artichoke $1.99">Artichoke</option>
@@ -96,12 +97,12 @@
                                 <option value="Mushrooms $1.99">Mushrooms</option>
                                 <option value="Olives $1.99">Olives</option>       
                             </select>
-                            <input type="number" name="price" value="1.99" id="">
+                            <input type="hidden" name="price" value="1.99">
     
                     </div>
                     <div>
                         <h3>Cheeses</h3>
-                        <label for="topping3">Cheese</label>
+                        <label for="topping3">Cheese</label> $1.99
                             <select name="topping3" id="veggies">
                                 <option value="Mozzarella $1.99">Mozzarella</option>
                                 <option value="Feta $1.99">Feta</option>
@@ -110,7 +111,7 @@
                                 <option value="GoudaCheese $1.99">Gouda Cheese</option>
                                 <option value="Provolone $1.99">Provolone</option>
                             </select>
-                            <input type="number" name="price" value="1.99" id="">
+                            <input type="hidden" name="price" value="1.99">
                         <!-- {% for toppings in topping %}
                             <a href="/order/{{ topping['id'] }}/add">ADD</a>
                         {% endfor %} -->

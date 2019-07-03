@@ -169,6 +169,9 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', foreign_keys=[user_id], backref=db.backref('orders', cascade='all'))
+
     @classmethod
     def total(cls):
         total = 0.0
@@ -179,7 +182,7 @@ class Order(db.Model):
         return total
 
     @classmethod
-    def create_order(cls, form):
+    def create_order(cls, user_id, form):
         
         str_input = form['size'].split()
         print(str_input)
@@ -196,17 +199,20 @@ class Order(db.Model):
         str_crust_value = crust[1].split('$')
         crust_price = float(str_crust_value[1])
 
-        print(form['price'])
-
+     
+   
         subtotal = float(form['price']) + size_price + crust_price
         total = float(form['qty']) * subtotal
         total_price = round(total, 2)
         qty = form['qty']
 
+      
         
         # if float(qty) < 1:
         #     qty="1"
         order = cls (
+            
+            user_id = user_id,
             method = form['method'],
             size = str_size,
             crust = str_crust,
@@ -216,7 +222,7 @@ class Order(db.Model):
         )
         db.session.add(order)
         db.session.commit()
-        
+        topping = Topping.new(order.id, form)
         print (order)
         return order.id
 
@@ -231,8 +237,8 @@ class Order(db.Model):
         return get_order
 
     @classmethod
-    def edit_order(cls, form, order_id):
-        order_update = Order.get(order_id)
+    def edit_order(cls, form, id):
+        order_update = Order.query.get(id)
         order_update.method = form['method']
         order_update.size = form['size']
         order_update.crust = form['crust']
@@ -289,9 +295,12 @@ class Topping(db.Model):
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     #many to many relationship btw topping and order
     
-
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    order = db.relationship('Order', foreign_keys=[order_id], backref=db.backref('toppings', cascade='all'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', foreign_keys=[user_id], backref=db.backref('toppings', cascade='all'))
     @classmethod
-    def new(cls, form):
+    def new(cls, order_id, form):
 
         topping1 = form['topping1'].split()
         print(topping1)
@@ -320,6 +329,8 @@ class Topping(db.Model):
         total_price = round(subtotal, 2) 
 
         new_toppings = cls (
+  
+            order_id = order_id,
             topping1 = str_topping1,
             topping2 = str_topping2,
             topping3 = str_topping3,
@@ -327,7 +338,11 @@ class Topping(db.Model):
         )
         db.session.add(new_toppings)
         db.session.commit()
-        return new_toppings
+        return new_toppings.id
+    @classmethod 
+    def get_order_topping(cls, order_id):
+        get_users_all_order = cls.query.filter_by(order_id = order_id).all()
+        return get_users_all_order
 
     @classmethod
     def delete(cls, id):
@@ -346,6 +361,7 @@ class Topping(db.Model):
         user = User.query.get(user_id)
         add_order_to_table.order_who_have_this_topping.append(user)
         db.session.commit()
+        
 class Random_order(db.Model):
     __tablename__ = 'random_orders'
     id = db.Column(db.Integer, primary_key = True)

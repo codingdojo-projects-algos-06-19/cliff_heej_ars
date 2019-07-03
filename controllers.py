@@ -72,6 +72,13 @@ def user_update():
     print('user_update')
     return redirect(url_for('dashboard'))
 
+def pizza_update():
+    order_id = session['order_id']
+    update_order = Order.edit_order(order_id, request.form)
+    order = Order.query.get(order_id)
+    print('order')
+    return redirect(url_for('order'))
+
 #pizza controllers
 def pizza_dashboard():
     if 'user_id' not in session:
@@ -88,17 +95,19 @@ def pizza_dashboard():
 def pizza_create():
     if 'user_id' not in session:
         return redirect(url_for('users:new'))
-    pizza = Order.create_order(request.form)
-    toppings = Topping.new(request.form)
-    session['pizza_id'] = pizza
+    user_id = session['user_id']
+    order_id = Order.create_order(user_id, request.form)
+    session['order_id'] = order_id
     return redirect(url_for('order'))
 
 #order page
 def order_page():
     if 'user_id' not in session:
         return redirect(url_for('users:login_page'))
+    # current_order = Order.query.get(session['user_id'])
+    # user_order = Topping.query.get(session['topping_id'])
     pizza = Order.get_order()
-    topping = Topping.get_all()
+    topping = Topping.get_order_topping(session['order_id'])
     total = Order.total
     current_user = User.query.get(session['user_id'])
     return render_template('order.html', pizza = pizza, topping = topping, total = total, user = current_user)

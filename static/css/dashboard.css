@@ -10,10 +10,16 @@ body {
     /* background-color: rgba(219, 217, 217, 0.2); */
 }
 body::after {
-    background-image: url('../static/slice.jpg');
+    background-image: url('../img/slice.jpg');
     background-size: cover;
     opacity: .4;
     z-index: -2;
+}
+.container {
+    text-align: left;
+}
+h4 {
+    font-size: 15px;
 }
 h2 {
     font-family: 'Kalam', cursive;
@@ -108,7 +114,7 @@ li {
     height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
-    background-image: url("/static/bigslice.jpg");
+    background-image: url("../img/bigslice.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 50px;
@@ -126,7 +132,7 @@ li {
     height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
-    background-image: url("/static/freshslice.png");
+    background-image: url("../img/freshslice.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 50px;
@@ -144,22 +150,25 @@ li {
     height: 170px;
     margin-bottom: 10px;
     background-color:rgba(235, 235, 235, 0.5);
-    background-image: url("/static/indexPic.jpg");
+    background-image: url("../img/indexPic.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 50px;
 }
 /* h1 {
     margin-top: 20px;
-    border:1px solid black;
-    background-color: black;
-    text-align: center;
-    width: 300px;
-} */
 
+    margin-left: 100px;
+} */
+h5 {
+    margin-top: 20px;
+    margin-left: 100px;
+    font-size: 25px;
+}
 .footer {
     text-align: center;
     margin-top: 10px;
+
     
 }
 .info p {

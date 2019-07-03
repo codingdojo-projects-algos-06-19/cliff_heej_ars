@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
   
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="{{ url_for('dashboard') }}"><img src="../static/picha1.png"></a>
+            <a href="{{ url_for('dashboard') }}"><img src="../static/img/picha1.png"></a>
         </div>
         <div class="header_info">
             <h2>welcome {{ user.first_name }}</h2>
@@ -37,15 +37,16 @@
         </div>
     </div>
 
-    <div class="center">
+    <!-- <div class="center">
         <h3>{{ user.first_name }}'s account</h3>
         <div class="account_info">
             <p>name: {{ user.first_name }} {{ user.last_name }}</p>
             <p>email: {{ user.email }}</p>
             <p>address: {{ address.street }} {{ address.city }} {{ address.state }} {{ address.zip_code }} </p>
             <p>Created on: {{ user.created_at }}</p>
-        </div>
-        <h1>UPDATE</h1>
+        </div> -->
+        <h6>dd</h6>
+        <h5>UPDATE YOUR ACCOUNT</h5>
         <div class="container">
             <form action="{{ url_for('users:update') }}" method="post">
                 <div class = "form-group">
@@ -58,7 +59,7 @@
                 </div>
                 <div class = "form-group">
                     <label for="email">Email:</label>
-                    <input type="text" class="form-control" name="email" id="" placeholder="{{ user.email }}">
+                    <h4>{{ user.email }}</h4>
                 </div>
                 <div class = "form-group">
                     <label for="phone">Phone Number:</label>

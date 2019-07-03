@@ -7,7 +7,7 @@
     /* background-color: rgba(219, 217, 217, 0.2); */
 }
 body::after {
-    background-image: url('../static/slice.jpg');
+    background-image: url('../img/slice.jpg');
     background-size: cover;
     opacity: .4;
     z-index: -2;
@@ -78,7 +78,7 @@ li {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.50);
 }
 .center {
-    background-image: url('../static/yellowslice.jpg');
+    background-image: url('../img/yellowslice.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
